@@ -1,5 +1,6 @@
 import math
 import random
+from os import system
 from time import sleep
 
 global player_xp
@@ -164,6 +165,8 @@ def start_game():
     sleep(1)
     delay_print("You find yourself in a dark maosoleum, with the sounds of creatures all around you.")
     delay_print("There's nothing you can do... EXPECT BRAAAAAAAWL!\n")
+    sleep(2)
+    system("clear")
     battle()
 
 def shakespear_title():
@@ -200,6 +203,13 @@ def battle():
             delay_print(f"{current_enemy.get("type")} attacks you with {current_enemy_attack['name']}!")
             delay_print(f"It deals {current_enemy_attack["dmg"]} DMG!\n")
             player_hp -= current_enemy_attack["dmg"]
+            if player_hp <= 0:
+                player_gold = 0
+                delay_print("You died and lost your gold...")
+                delay_print("Returning to titlescreen.")
+                sleep(2)
+                player_hp = 100
+                First_Title_Screen()
             delay_print(f"Your HP: {player_hp}\n")
             delay_print("Retaliate with...?")
             delay_print("[1] Attack")
