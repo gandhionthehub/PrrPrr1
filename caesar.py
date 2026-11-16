@@ -15,3 +15,5 @@ def kryptera(text):
             print(ny_bokstav, end ="")
 
 kryptera(meddelande)
+
+
